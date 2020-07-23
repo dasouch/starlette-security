@@ -9,18 +9,19 @@ from starlette.responses import UJSONResponse
 from starlette.testclient import TestClient
 
 from security.decorators.secure import secure
+from security.utils import ReasonEnum
 
 app = Starlette()
 
 
 @app.route(path='/many-requests', methods=['GET'])
-@secure(reason='many requests')
+@secure(reason=ReasonEnum.many_requests.value)
 async def many_requests(request):
     return UJSONResponse({'ok': True})
 
 
 @app.route(path='/brute-force', methods=['GET'])
-@secure(reason='brute force')
+@secure(reason=ReasonEnum.brute_force.value)
 async def brute_force(request):
     return UJSONResponse({'ok': True})
 
