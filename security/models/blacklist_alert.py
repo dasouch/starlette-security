@@ -1,3 +1,4 @@
+import asyncio
 from datetime import datetime, timedelta
 
 from meliodas.model import Model
@@ -37,8 +38,10 @@ class BlacklistAlert(Model):
             if count >= int(MAX_COUNT):
                 blacklist = await Blacklist.get_or_none(ip=ip)
                 if not blacklist:
-                    await Blacklist.create(ip=ip, updated=updated, reason=reason, path=path)
-                await send_message_alert(message=f'[*] Blocked IP: {ip} - Reason: {reason}')
-                log_debug('blocked ip', extra={'ip': ip, 'reason': reason})
+                    await asyncio.gather(
+                        Blacklist.create(ip=ip, updated=updated, reason=reason, path=path),
+                        send_message_alert(message=f'[*] Blocked IP: {ip} - Reason: {reason} - PATH: {path}')
+                    )
+                    log_debug('blocked ip', extra={'ip': ip, 'reason': reason})
         else:
             await cls.create(ip=ip, count=1, updated=updated, path=path)
