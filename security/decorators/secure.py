@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
 
-from starlette.responses import UJSONResponse
+from starlette.responses import JSONResponse
 
 from security.controllers import IpRequest
 from security.models import Blacklist, BlacklistAlert
@@ -17,9 +17,9 @@ def secure(reason=ReasonEnum.many_requests.value):
             blacklist = await Blacklist.get_or_none(ip=host, updated={'$gte': now})
             if blacklist:
                 if blacklist.reason == ReasonEnum.brute_force.value:
-                    return UJSONResponse({'ok': False, 'message': 'invalid password'})
+                    return JSONResponse({'ok': False, 'message': 'invalid password'})
                 else:
-                    return UJSONResponse({'ok': False, 'message': 'Las credenciales de autenticación no se proveyeron.'})
+                    return JSONResponse({'ok': False, 'message': 'Las credenciales de autenticación no se proveyeron.'})
             await BlacklistAlert.register_alert(ip=host, reason=reason, path=request.url.path)
             return await f(request, **kwargs)
         return wrapper

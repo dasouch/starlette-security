@@ -1,11 +1,10 @@
 import asyncio
 
-import nest_asyncio
 from meliodas.model import client as client_db
 from meliodas.settings import DB_NAME
 from pytest import fixture
 from starlette.applications import Starlette
-from starlette.responses import UJSONResponse
+from starlette.responses import JSONResponse
 from starlette.testclient import TestClient
 
 from security.decorators.secure import secure
@@ -17,13 +16,14 @@ app = Starlette()
 @app.route(path='/many-requests', methods=['GET'])
 @secure(reason=ReasonEnum.many_requests.value)
 async def many_requests(request):
-    return UJSONResponse({'ok': True})
+    return JSONResponse({'ok': True})
 
 
 @app.route(path='/brute-force', methods=['GET'])
 @secure(reason=ReasonEnum.brute_force.value)
 async def brute_force(request):
-    return UJSONResponse({'ok': True})
+    return JSONResponse({'ok': True})
+
 
 
 @fixture(scope='session')
@@ -39,8 +39,6 @@ async def drop_test_database():
     yield
 
 
-@fixture()
-def client():
-    nest_asyncio.apply()
-    with TestClient(app=app) as test_client:
-        yield test_client
+@fixture
+def test_client():
+    return TestClient(app)
