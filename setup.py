@@ -5,7 +5,7 @@ install_requires = [
     'starlette==0.14.2',
     'meliodas==1.1.0',
     'rocketchat==1.0.1',
-    'hawk==1.0.78'
+    'hawk==1.0.8'
 ]
 
 
@@ -18,7 +18,7 @@ test_require = [
 
 setup(
     name='security',
-    version='1.0.3',
+    version='1.0.4',
     packages=['security'],
     install_requires=install_requires,
     author='Danilo Vargas',
