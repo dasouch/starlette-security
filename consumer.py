@@ -7,7 +7,8 @@ loop = asyncio.get_event_loop()
 
 
 async def main():
-    await Consumer.consume('send_message_alert', callback=callback_send_message_rocket_chat)
+    async with Consumer() as consumer:
+        await consumer.consume('send_message_alert', callback=callback_send_message_rocket_chat)
 
 if __name__ == "__main__":
     loop.run_until_complete(main())
