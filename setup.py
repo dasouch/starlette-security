@@ -5,7 +5,7 @@ install_requires = [
     'starlette==0.14.2',
     'meliodas==1.1.7',
     'rocketchat==1.0.1',
-    'hawk==1.2.6'
+    'hawk==1.2.7'
 ]
 
 
@@ -18,13 +18,13 @@ test_require = [
 
 setup(
     name='security',
-    version='1.1.2',
+    version='1.1.3',
     packages=['security'],
     install_requires=install_requires,
     author='Danilo Vargas',
     dependency_links=[
         'https://github.com/dasouch/meliodas.git@v1.1.7#egg=meliodas',
         'https://github.com/dasouch/rocketchat-singleton.git@v1.0.1#egg=rocketchat',
-        'https://github.com/dasouch/hawk.git@v1.2.6#egg=hawk'
+        'https://github.com/dasouch/hawk.git@v1.2.7#egg=hawk'
     ]
 )
