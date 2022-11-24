@@ -5,7 +5,7 @@ install_requires = [
     'starlette==0.14.2',
     'meliodas==1.1.8',
     'rocketchat==1.0.1',
-    'hawk==1.2.8'
+    'hawk==1.3.1'
 ]
 
 
@@ -24,6 +24,6 @@ setup(
     dependency_links=[
         'https://github.com/dasouch/meliodas.git@v1.1.8#egg=meliodas',
         'https://github.com/dasouch/rocketchat-singleton.git@v1.0.1#egg=rocketchat',
-        'https://github.com/dasouch/hawk.git@v1.2.8#egg=hawk'
+        'https://github.com/dasouch/hawk.git@v1.3.1#egg=hawk'
     ]
 )
