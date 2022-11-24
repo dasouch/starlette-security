@@ -18,7 +18,6 @@ test_require = [
 
 setup(
     name='security',
-    version='1.1.5',
     packages=['security'],
     install_requires=install_requires,
     author='Danilo Vargas',
