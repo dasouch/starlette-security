@@ -1,4 +1,4 @@
 starlette==0.14.2
--e git+https://github.com/dasouch/meliodas.git@v1.1.8#egg=meliodas
+-e git+https://github.com/dasouch/meliodas.git@v1.1.10#egg=meliodas
 -e git+https://github.com/dasouch/rocketchat-singleton.git@v1.0.1#egg=rocketchat
 -e git+https://github.com/dasouch/hawk.git@v1.3.1#egg=hawk
