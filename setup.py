@@ -2,7 +2,7 @@ from setuptools import setup
 
 
 install_requires = [
-    'starlette==0.14.2',
+    'starlette==0.25.0',
     'meliodas==1.1.10',
     'rocketchat==1.0.1',
     'hawk==1.4.3'
